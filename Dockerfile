@@ -19,11 +19,13 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install app dependencies
-RUN npm install
+RUN yarn
+
+RUN yarn theia build
 
 # Bundle app source
 COPY . .
 
 # Expose port and start the application
 EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
