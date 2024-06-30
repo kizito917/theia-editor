@@ -22,8 +22,8 @@
       "prepare": "yarn run clean && yarn build && yarn run download:plugins",
       "clean": "theia clean",
       "build": "theia build --mode development",
-      "start": "theia start",
-      "download:plugins": "theia download:plugins"
+      "start": "theia start --plugins=local-dir:plugins",
+      "download:plugins": "theia download:plugins --ignore-errors"
     },
     "theiaPluginsDir": "plugins",
     "theiaPlugins": {

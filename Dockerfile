@@ -11,9 +11,10 @@ RUN apt-get update && apt-get install -y \
 
 # Set the Python path for node-gyp
 ENV PYTHON=/usr/bin/python3
+ENV PUPPETEER_SKIP_DOWNLOAD = true
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /home/theia
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
@@ -26,4 +27,6 @@ RUN yarn theia build
 # Bundle app source
 COPY . .
 
-CMD [ "yarn", "start" ]
+EXPOSE 3000
+
+CMD [ "node", "/home/theia/src-gen/backend/main.js", "/home/project", "--hostname=0.0.0.0" ]
